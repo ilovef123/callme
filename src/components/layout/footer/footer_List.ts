@@ -8,13 +8,14 @@ interface Contact {
 
 export function useContact() {
     const contacts = ref<Contact[]>([
-        { name: '张三', email: 'zhangsan@example.com', phone: '123-456-7890' },
-        { name: '李四', email: 'wangwu@example.com', phone: '098-765-4321' },
-        { name: '王五', email: 'wangwu@example.com', phone: '111-222-3333' }
+        { name: '曾炜彬', email: '19875160797@163.com', phone: '198-7516-0797' },
+        { name: '陈海军', email: '17820597112@163.com', phone: '178-2059-7112' },
+        { name: '钟锦骏', email: '1906274873@qq.com', phone: '130-4428-2771' },
+        { name: '赖杜铭', email: '3310459209@qq.com', phone: '147-4974-6970' }
     ]);
     
     const technologies = ref<string[]>([
-        'Vue', 'React', 'Flutter', 'Spring Boot', 'Tauri', 'Nuxt'
+        'Vue', 'Element', 'Scss', 'TypeScript'
     ]);
     
     const currentYear = computed(() => new Date().getFullYear());

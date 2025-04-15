@@ -33,7 +33,7 @@
           <div class="contact-value">{{ contact.name }}</div>
         </div>
         <div class="contact-item">
-          <div class="contact-label">Email：</div>
+          <div class="contact-label">邮箱：</div>
           <div class="contact-value">{{ contact.email }}</div>
         </div>
         <div class="contact-item">
@@ -125,7 +125,7 @@ $spacing-xsmall: 10px;
     flex-direction: column;
     align-items: center; // 文字居中对齐
     justify-content: center; // 内容居中对齐
-    width: 30%; // 设置固定宽度
+    width: 25%; // 设置固定宽度
     min-height: 100px; // 设置最小高度
     padding: $spacing-small; // 内边距
     background-color: #fff; // 柔和的背景颜色

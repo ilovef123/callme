@@ -1,0 +1,223 @@
+// style.scss
+// 颜色变量
+$primary-color: #006cff;
+$primary-hover: #3f37c9;
+$gradient-start: #ddfff1;
+$gradient-end: #dcf1ff;
+$white: #ffffff;
+$text-color: #2d3748;
+$text-light: rgba(255, 255, 255, 0.9);
+$border-color: #e2e8f0;
+
+// 间距变量
+$spacing-xl: 2.5rem;
+$spacing-lg: 2rem;
+$spacing-md: 1.5rem;
+$spacing-sm: 1rem;
+$spacing-xs: 0.5rem;
+
+// 边框变量
+$border-radius: 0.5rem;
+$border-radius-lg: 1rem;
+$border-radius-xl: 8rem;
+
+// 字体变量
+$font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+$font-size-base: 1rem;
+$font-size-lg: 1.1rem;
+$font-size-xl: 2rem;
+$font-size-xxl: 8rem;
+$font-size-slogan: 1.8rem;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(90deg, $gradient-start, $gradient-end);
+  font-family: $font-family;
+}
+
+.login-page {
+  position: relative; // 添加相对定位
+  min-height: 93.4vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-md;
+}
+
+.top-left-text {
+  position: absolute; // 绝对定位
+  top: $spacing-lg;
+  left: $spacing-lg;
+  font-family: '方正榜书行简体';
+  font-size: 5rem;
+  font-weight: bold;
+  color: $white;
+  background: linear-gradient(90deg, #18ff9d,#009cff); // 定义渐变色
+  -webkit-background-clip: text; // 将背景剪裁为文本
+  -webkit-text-fill-color: transparent; // 使文本填充颜色透明，以便显示背景渐变
+  z-index: 10; // 确保文本在最上层
+}
+
+.login-container {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  height: 500px;
+  background: $white;
+  border-radius: $border-radius-lg;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.brand-section {
+  flex: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md;
+  background: $primary-color;
+  color: $text-light;
+  border-top-right-radius: $border-radius-xl;
+  border-bottom-right-radius: $border-radius-xl;
+
+  .brand-content {
+    max-width: 80%;
+    text-align: center;
+
+    .brand-name {
+      font-family: '方正榜书行简体';
+      font-size: $font-size-xxl;
+      font-weight: bold;
+      margin-bottom: $spacing-xs;
+      color: #fff;
+    }
+
+    .brand-slogan {
+      font-family: '方正榜书行简体';
+      font-size: $font-size-lg;
+      line-height: 2;
+      font-weight: 500;
+    }
+
+    .brand-slogan .chinese-slogan {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: $font-size-xl; // 调整“用心交流”的字体大小 
+      font-weight: 1200;
+    }
+  }
+}
+
+.form-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xl;
+  background: $white;
+
+  .login-form {
+    width: 100%;
+    max-width: 400px;
+
+    .form-title {
+      font-size: $font-size-xl;
+      margin-bottom: $spacing-lg;
+      color: $text-color;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .form-group {
+      margin-bottom: $spacing-md;
+
+      input {
+        width: 90%;
+        padding: $spacing-sm;
+        border: 1px solid $border-color;
+        border-radius: $border-radius;
+        font-size: $font-size-base;
+        transition: all 0.3s ease;
+        height: 10px;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-color;
+          box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+        }
+      }
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: $spacing-sm;
+      background-color: $primary-color;
+      color: $white;
+      border: none;
+      border-radius: $border-radius;
+      font-size: $font-size-base;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      height: 50px;
+      margin-top: $spacing-sm;
+
+      &:hover {
+        background-color: $primary-hover;
+      }
+    }
+
+    .forgot-links {
+      display: flex;
+      justify-content: space-between;
+      margin-top: $spacing-md;
+
+      .forgot-link {
+        font-size: 0.875rem;
+        color: lighten($text-color, 30%);
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+
+      .forgot-password {
+        font-size: 0.875rem;
+        color: lighten($text-color, 30%);
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: $primary-color;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .login-page {
+    .login-container {
+      flex-direction: column;
+      height: auto;
+      max-width: 500px;
+
+      .brand-section {
+        padding: $spacing-lg;
+        flex: none;
+        height: 300px;
+      }
+
+      .form-section {
+        padding: $spacing-xl $spacing-lg;
+      }
+    }
+  }
+}

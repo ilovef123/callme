@@ -1,23 +1,31 @@
-import { WebPage, Moon, GithubOne } from '@icon-park/vue-next'
+import { WebPage, Moon, GithubOne, Browser } from '@icon-park/vue-next'
 
 interface Imenus {
   name: string;
-  icon?: any;
+  iconLight?: any;
+  iconNight?: any;
+  key?: string;
 }
 export function useMenu() {
   const menus: Imenus[] = [
     {
       name: '即兴网页',
-      icon: WebPage
+      iconLight: WebPage,
+      iconNight: Browser,
+      key: 'discover'
+    },
+
+  ]
+  const menus2: Imenus[] = [
+    {
+      name: 'github',
+      icon: GithubOne,
+      key: ''
     },
     {
       name: '黑夜模式',
       icon: Moon
-    },
-    {
-      name: 'github',
-      icon: GithubOne
     }
   ]
-  return { menus }
+  return { menus, menus2 }
 }

@@ -70,7 +70,8 @@ $spacing-xsmall: 10px;
   max-width: 100%;
   margin: 0 auto;
   padding: $spacing-large $spacing-medium;
-  color: $text-color;
+  color: var(--footer-text, #333); /* 添加回退值 */
+  background-color: var(--footer-bg, #fff);
   line-height: 1.6;
 }
 
@@ -101,13 +102,13 @@ $spacing-xsmall: 10px;
     text-align: center;
     margin-bottom: $spacing-xsmall;
     font-weight: normal;
-    color: $secondary-text;
+    color: var(--text-color) !important;
   }
   .author {
     text-align: center;
     font-style: italic;
     margin-bottom: $spacing-medium;
-    color: $muted-text;
+    color: var(--text-color) !important;
   }
   strong {
     color: $primary-color;
@@ -128,10 +129,13 @@ $spacing-xsmall: 10px;
     width: 25%; // 设置固定宽度
     min-height: 100px; // 设置最小高度
     padding: $spacing-small; // 内边距
-    background-color: #fff; // 柔和的背景颜色
-    border: 1px solid $border-color;
+    background-color: var(--contact-bg, #fff) !important;
+    border-color: var(--border-color, #e8e8e8) !important;
+    box-shadow: 0 4px 8px var(--shadow-color, rgba(0, 0, 0, 0.1)) !important;
+    // background-color: #fff; // 柔和的背景颜色
+    // border: 1px solid $border-color;
     border-radius: $spacing-xsmall; // 圆角边框
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // 添加默认阴影
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // 添加默认阴影
     transition: box-shadow 0.3s ease, transform 0.3s ease; // 添加过渡效果
     margin: $spacing-xsmall;
 
@@ -155,7 +159,7 @@ $spacing-xsmall: 10px;
       }
 
       .contact-value {
-        color: $text-color;
+        color: var(--footer-text, #333) !important;
         font-size: 14px; // 调整字体大小
       }
     }
@@ -179,7 +183,7 @@ $spacing-xsmall: 10px;
 .copyright {
   text-align: center;
   font-size: 14px;
-  color: $secondary-text;
+  color: var(--text-color) !important;
   padding-top: $spacing-small;
   border-top: 1px solid $border-color;
 }

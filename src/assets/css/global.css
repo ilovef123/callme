@@ -1,0 +1,91 @@
+/* global.css 新增内容 */
+/* 注意：需要把原 dark 类选择器移动到 :root 同级层级 */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --header-bg: #ffffff;
+  --hover-bg: #eeeeee;
+  --border-color: #e0e0e0;
+  --header-right-bg: #eee;
+}
+
+.dark {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+  --header-bg: #000000;
+  --hover-bg: #3d3d3d;
+  --border-color: #4a4a4a;
+  /* 新增 footer 相关变量 */
+  --footer-bg: #1a1a1a;
+  --contact-bg: #000000;
+  --footer-text: #ffffff;
+  --header-right-bg: #aeaeaec4;
+}
+
+/* 强制主题变量应用到全局 */
+html.dark {
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* 修改 header 样式声明 */
+header {
+  background-color: var(--header-bg);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  /* 合并过渡效果 */
+}
+
+.headerlist .link {
+  color: var(--text-color);
+}
+
+.headerlist .link::before {
+  background: var(--hover-bg);
+}
+
+/* 修改 header 阴影 */
+header {
+  box-shadow: 0 6px 12px -2px rgba(184, 233, 255, 0.8) !important;
+}
+
+.dark header {
+  box-shadow: none !important;
+  /* 深色模式取消阴影 */
+}
+
+/* 在 global.css 添加 footer 全局样式 */
+.dark .recruitment-container {
+  color: var(--footer-text);
+  background-color: var(--footer-bg);
+}
+
+.dark .contact-column {
+  background-color: var(--contact-bg) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1) !important;
+}
+
+.dark .contact-value {
+  color: var(--footer-text) !important;
+}
+
+/* 在 global.css 的 .dark 类添加 */
+.dark .headerlist .link .icon i {
+  color: var(--text-color) !important;
+}
+
+.dark .link::before {
+  background: #aeaeaec4;
+}
+
+/* 针对图标组件添加 SVG 样式控制 */
+.dark .headerlist .link svg {
+  fill: var(--text-color) !important;
+  stroke: var(--text-color) !important;
+}
+
+/* 强制继承文字颜色 */
+.dark .headerlist .link * {
+  color: inherit !important;
+}

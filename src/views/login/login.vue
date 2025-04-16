@@ -1,21 +1,20 @@
 <template>
   <div class="app-container">
-  
     <div class="login-page">
-        <div class="top-left-text">Call Me</div>
+      <div class="top-left-text" v-once>Call Me</div>
       <div class="login-container">
         <!-- 左侧品牌信息 -->
         <div class="brand-section">
           <div class="brand-content">
-            <h1 class="brand-name">Me</h1>
-            <p class="brand-slogan"><span class="chinese-slogan">用心交流</span> <br> Communicate with heart</p>
+            <h1 class="brand-name" v-once>Me</h1>
+            <p class="brand-slogan" v-once><span class="chinese-slogan">用心交流</span> <br> Communicate with heart</p>
           </div>
         </div>
         
         <!-- 右侧登录表单 -->
         <div class="form-section">
           <form class="login-form" @submit.prevent="handleLogin">
-            <h2 class="form-title">账号登录</h2>
+            <h2 class="form-title" v-once>账号登录</h2>
             
             <div class="form-group">
               <input

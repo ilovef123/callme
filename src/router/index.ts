@@ -3,12 +3,17 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import('@/views/Root.vue'),
+    component: () => import(/* webpackPrefetch: true */ '@/views/Root.vue'),
   },
   {
     path: '/discover',
     name: 'discover',
-    component: () => import('@/views/discover/index.vue')
+    component: () => import(/* webpackPrefetch: true */ '@/views/discover/index.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import(/* webpackPrefetch: true */ '@/views/login/index.vue')
   }
 ];
 const router = createRouter({

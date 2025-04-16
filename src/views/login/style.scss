@@ -58,7 +58,7 @@ $font-size-slogan: 1.8rem;
   font-size: 5rem;
   font-weight: bold;
   color: $white;
-  background: linear-gradient(90deg, #18ff9d,#009cff); // 定义渐变色
+  background: linear-gradient(90deg, #18ff9d, #009cff); // 定义渐变色
   -webkit-background-clip: text; // 将背景剪裁为文本
   -webkit-text-fill-color: transparent; // 使文本填充颜色透明，以便显示背景渐变
   z-index: 10; // 确保文本在最上层

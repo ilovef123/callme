@@ -11,8 +11,8 @@ const routes = [
     component: () => import(/* webpackPrefetch: true */ '@/views/discover/index.vue')
   },
   {
-    path: '/login',
-    name: 'login',
+    path: '/Register',
+    name: 'Register',
     component: () => import(/* webpackPrefetch: true */ '@/views/login/index.vue')
   }
 ];

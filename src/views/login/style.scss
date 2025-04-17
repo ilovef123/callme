@@ -53,19 +53,18 @@ $font-size-slogan: 1.8rem;
 }
 
 .top-left-text {
-  position: absolute; // 绝对定位
+  position: absolute;
   top: $spacing-lg;
   left: $spacing-lg;
   font-family: $font-familys;
   font-size: 5rem;
   font-weight: bold;
-  color: $white;
-  background: linear-gradient(90deg, #18ff9d, #009cff); // 定义渐变色
-  -webkit-background-clip: text; // 将背景剪裁为文本
-  -webkit-text-fill-color: transparent; // 使文本填充颜色透明，以便显示背景渐变
-  z-index: 10; // 确保文本在最上层
+  background: linear-gradient(90deg, #18ff9d, #009cff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  z-index: 10;
   user-select: none;
-
+  filter: drop-shadow(-4px 5px 0px rgba(0, 55, 138, 0.5));
 }
 
 .login-container {

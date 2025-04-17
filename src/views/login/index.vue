@@ -1,8 +1,8 @@
 <script setup lang="ts">
-  import Login from './login.vue'
+  import Register from './register.vue'
 </script>
 <template>
-  <Login />
+  <Register />
 </template>
 
 <style></style>

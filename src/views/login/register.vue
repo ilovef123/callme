@@ -13,12 +13,12 @@
         
         <!-- 右侧登录表单 -->
         <div class="form-section">
-          <form class="login-form" @submit.prevent="handleLogin">
+          <form class="login-form">
             <h2 class="form-title" v-once>账号登录</h2>
             
             <div class="form-group">
               <input
-                v-model="form.username"
+               
                 type="text"
                 placeholder="请输入用户名"
                 required
@@ -27,7 +27,7 @@
             
             <div class="form-group">
               <input
-                v-model="form.password"
+                
                 type="password"
                 placeholder="请输入密码"
                 required
@@ -36,7 +36,8 @@
             
             <button type="submit" class="login-btn">进入</button>
             <div class="forgot-links">
-              <a href="#" class="forgot-link">注册账号</a>
+              <!-- 移除注释 -->
+              <router-link to="/login" class="forgot-link">注册账号</router-link>
               <a href="#" class="forgot-password">忘记密码</a>
             </div>
           </form>
@@ -47,21 +48,29 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+  import { reactive } from 'vue'
+  import { useRouter } from 'vue-router'
 
-interface LoginForm {
-  username: string
-  password: string
-}
+  interface LoginForm {
+    username: string
+    password: string
+  }
 
-const form = reactive<LoginForm>({
-  username: '',
-  password: ''
-})
+  const form = reactive<LoginForm>({
+    username: '',
+    password: ''
+  })
 
-const handleLogin = () => {
-  console.log('登录信息:', form)
-}
+  const router = useRouter()
+
+  const handleLogin = () => {
+    console.log('登录信息:', form)
+  }
+
+  // 移除未使用的 goLogin 函数
+  // function goLogin(){
+  //     router.push({path:'/login'})
+  // }
 </script>
 
 <style lang="scss" src="./style.scss"></style>

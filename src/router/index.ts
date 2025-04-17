@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+
 const routes = [
   {
     path: '/',
@@ -11,14 +12,21 @@ const routes = [
     component: () => import(/* webpackPrefetch: true */ '@/views/discover/index.vue')
   },
   {
-    path: '/Register',
+    path: '/register',
     name: 'Register',
-    component: () => import(/* webpackPrefetch: true */ '@/views/login/index.vue')
+    component: () => import(/* webpackPrefetch: true */ '@/views/login/index.vue'),
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackPrefetch: true */ '@/views/login/login.vue')
   }
 ];
+
 const router = createRouter({
   history: createWebHistory(),
   linkActiveClass: 'active',
   routes
-})
-export default router
+});
+
+export default router;

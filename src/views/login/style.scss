@@ -1,9 +1,9 @@
 // style.scss
 // 颜色变量
-$primary-color: #0033ff;
-$primary-hover: #3f37c9;
-$gradient-start: #b0ffde;
-$gradient-end: #b2dfff;
+$primary-color: #006cff;
+$primary-hover: #3759c9;
+$gradient-start: #ddfff1;
+$gradient-end: #dcf1ff;
 $white: #ffffff;
 $text-color: #2d3748;
 $text-light: rgba(255, 255, 255, 0.9);
@@ -23,7 +23,6 @@ $border-radius-xl: 8rem;
 
 // 字体变量
 $font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
-$font-familys: '方正榜书行简体';
 $font-size-base: 1rem;
 $font-size-lg: 1.1rem;
 $font-size-xl: 2rem;
@@ -53,25 +52,25 @@ $font-size-slogan: 1.8rem;
 }
 
 .top-left-text {
-  position: absolute;
+  position: absolute; // 绝对定位
   top: $spacing-lg;
   left: $spacing-lg;
-  font-family: $font-familys;
+  font-family: '方正榜书行简体';
   font-size: 5rem;
   font-weight: bold;
-  background: linear-gradient(90deg, #18ff9d, #009cff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  z-index: 10;
+  color: $white;
+  background: linear-gradient(90deg, #18ff9d, #009cff); // 定义渐变色
+  -webkit-background-clip: text; // 将背景剪裁为文本
+  -webkit-text-fill-color: transparent; // 使文本填充颜色透明，以便显示背景渐变
+  z-index: 10; // 确保文本在最上层
   user-select: none;
-  filter: drop-shadow(-4px 5px 0px rgba(0, 55, 138, 0.5));
 }
 
 .login-container {
   display: flex;
   width: 100%;
   max-width: 800px;
-  height: 500px;
+  height: 500px; // 增加高度以适应验证码输入框
   background: $white;
   border-radius: $border-radius-lg;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
@@ -94,7 +93,7 @@ $font-size-slogan: 1.8rem;
     text-align: center;
 
     .brand-name {
-      font-family: $font-familys;
+      font-family: '方正榜书行简体';
       font-size: $font-size-xxl;
       font-weight: bold;
       margin-bottom: $spacing-xs;
@@ -102,7 +101,7 @@ $font-size-slogan: 1.8rem;
     }
 
     .brand-slogan {
-      font-family: $font-familys;
+      font-family: '方正榜书行简体';
       font-size: $font-size-lg;
       line-height: 2;
       font-weight: 500;
@@ -130,14 +129,16 @@ $font-size-slogan: 1.8rem;
 
     .form-title {
       font-size: $font-size-xl;
-      margin-bottom: $spacing-lg;
+      margin-bottom: $spacing-sm;
       color: $text-color;
       text-align: center;
       font-weight: 600;
+     
     }
 
     .form-group {
       margin-bottom: $spacing-md;
+      position: relative; // 添加相对定位
 
       input {
         width: 90%;
@@ -146,13 +147,41 @@ $font-size-slogan: 1.8rem;
         border-radius: $border-radius;
         font-size: $font-size-base;
         transition: all 0.3s ease;
-        height: 10px;
+        // height: 40px; // 调整高度
 
         &:focus {
           outline: none;
           border-color: $primary-color;
           box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
         }
+      }
+
+      .send-code-btn {
+        position: absolute;
+        top: 50%;
+        right: 3%;
+        transform: translateY(-50%);
+        padding: 0 0.5rem;
+        background-color: $primary-color;
+        color: $white;
+        border: none;
+        border-radius: $border-radius;
+        font-size: $font-size-base;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        height: 40px; // 调整高度
+
+        &:hover {
+          background-color: $primary-hover;
+        }
+      }
+
+      .error-message {
+        color: red;
+        font-size: 0.875rem;
+        margin-top: $spacing-xs;
+        display: none; // 默认隐藏错误信息
       }
     }
 
@@ -168,7 +197,7 @@ $font-size-slogan: 1.8rem;
       cursor: pointer;
       transition: all 0.3s ease;
       height: 50px;
-      margin-top: $spacing-sm;
+      // margin-top: $spacing-sm;
 
       &:hover {
         background-color: $primary-hover;

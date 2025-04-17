@@ -10,6 +10,6 @@
   }
 </script>
 
-
-<style>
+<style lang="scss" scoped>
+@use './content_main.scss' as *; // 添加命名空间声明
 </style>

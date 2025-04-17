@@ -29,7 +29,7 @@ watchEffect(() => {
   <header>
     <div class="logo">
       <a href="/">
-        <img src="@/assets/images/logo.png" alt="Logo" class="logo-image">
+        <img src="@/assets/images/logo.png" alt="Logo" class="logo-image" style="-webkit-user-drag: none">
       </a>
     </div>
     <div class="headerlist">

@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <div class="login-page">
-      <div class="top-left-text" v-once>Call Me</div>
+      <a class="top-left-text" href="/">Call Me</a>
       <div class="login-container">
         <!-- 左侧品牌信息 -->
         <div class="brand-section">

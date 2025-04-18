@@ -64,6 +64,7 @@ $font-size-slogan: 1.8rem;
   -webkit-text-fill-color: transparent; // 使文本填充颜色透明，以便显示背景渐变
   z-index: 10; // 确保文本在最上层
   user-select: none;
+  filter: drop-shadow(-2px 4px 1px rgba(0, 31, 63, 0.6))
 }
 
 .login-container {
@@ -133,7 +134,7 @@ $font-size-slogan: 1.8rem;
       color: $text-color;
       text-align: center;
       font-weight: 600;
-     
+
     }
 
     .form-group {
@@ -250,6 +251,66 @@ $font-size-slogan: 1.8rem;
       .form-section {
         padding: $spacing-xl $spacing-lg;
       }
+    }
+  }
+}
+
+/* === Forgot Password Page 追加样式 === */
+.login-page .form-title {
+  font-size: $font-size-xl;
+  margin-bottom: $spacing-md;
+  color: $primary-color;
+}
+
+.login-page .form-group {
+  margin-bottom: $spacing-sm;
+
+  input {
+    width: 100%;
+    padding: $spacing-xs;
+    font-size: $font-size-base;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    outline: none;
+
+    &:focus {
+      border-color: $primary-color;
+    }
+  }
+
+  .error-message {
+    color: red;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    display: block;
+  }
+}
+
+.login-page .submit-button {
+  width: 100%;
+  padding: $spacing-sm;
+  background-color: $primary-color;
+  color: $white;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $primary-hover;
+  }
+}
+
+.login-page .form-footer {
+  margin-top: $spacing-sm;
+  text-align: center;
+
+  .form-link {
+    color: $primary-color;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 }

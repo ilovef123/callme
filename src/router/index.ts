@@ -20,7 +20,12 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackPrefetch: true */ '@/views/login/login.vue')
-  }
+  },
+  {
+    path: '/forgotpassword',
+    name: 'ForgotPassword',
+    component: () => import(/* webpackPrefetch: true */ '@/views/login/forgotPassword.vue')
+  },
 ];
 
 const router = createRouter({

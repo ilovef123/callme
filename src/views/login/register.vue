@@ -38,7 +38,7 @@
             <div class="forgot-links">
               <!-- 移除注释 -->
               <router-link to="/login" class="forgot-link">注册账号</router-link>
-              <a href="#" class="forgot-password">忘记密码</a>
+              <router-link to="/forgotpassword" class="forgot-password">忘记密码</router-link>
             </div>
           </form>
         </div>

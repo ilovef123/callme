@@ -4,7 +4,7 @@ import router from './router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import '@/assets/css/global.css'
-
+import '@/assets/fonts.scss'
 // import 'element-plus/theme-chalk/dark/css-vars.css'
 createApp(App).use(router).use(ElementPlus).mount('#app')
 

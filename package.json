@@ -12,9 +12,18 @@
   },
   "dependencies": {
     "@icon-park/vue-next": "^1.4.2",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "axios": "^1.8.4",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
     "element-plus": "^2.9.7",
+    "express": "^5.1.0",
+    "mongoose": "^8.13.2",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "zod": "^3.24.3"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.1",

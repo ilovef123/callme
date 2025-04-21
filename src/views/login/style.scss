@@ -314,3 +314,36 @@ $font-size-slogan: 1.8rem;
     }
   }
 }
+.error-message {
+  color: #ff4d4f !important;
+  font-size: 16px !important;
+  background: transparent !important;
+  position: relative !important;
+  z-index: 99 !important;
+  display: block !important;
+  min-height: 18px;
+  pointer-events: all;
+}
+.input-error-group {
+  position: relative;
+}
+.error-message-inside {
+  position: absolute;
+  right: 20px; // 或更大
+  left: unset;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff4d4f !important;
+  font-size: 14px;
+  background: #fff;
+  pointer-events: none;
+  z-index: 10;
+  max-width: 120px; // 防止太长超出
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.input-error {
+  border-color: #ff4d4f !important;
+}

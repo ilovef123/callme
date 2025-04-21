@@ -1,5 +1,21 @@
 /* global.css 新增内容 */
 /* 注意：需要把原 dark 类选择器移动到 :root 同级层级 */
+html, body, #app {
+  width: 100vw;
+  height: 100vh;
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  /* 关键：变量变更时平滑过渡 */
+  transition:
+    background 0.4s cubic-bezier(.4,0,.2,1),
+    background-color 0.4s cubic-bezier(.4,0,.2,1),
+    color 0.4s cubic-bezier(.4,0,.2,1),
+    border-color 0.4s cubic-bezier(.4,0,.2,1);
+}
 :root {
   --bg-color: #ffffff;
   --text-color: #222222;
@@ -88,4 +104,35 @@ header {
 /* 强制继承文字颜色 */
 .dark .headerlist .link * {
   color: inherit !important;
+}
+
+.theme-ripple {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  background: #fff;
+  opacity: 0.12;
+  transform: scale(0);
+  transition:
+    transform 0.6s cubic-bezier(.4,0,.2,1),
+    opacity 0.4s cubic-bezier(.4,0,.2,1);
+}
+.theme-ripple.dark {
+  background: #000;
+  opacity: 0.15;
+}
+.theme-ripple.active {
+  opacity: 0.18;
+  transform: scale(1);
+  transition:
+    transform 0.6s cubic-bezier(.4,0,.2,1),
+    opacity 0.4s cubic-bezier(.4,0,.2,1);
+}
+.theme-ripple.shrink {
+  opacity: 0.18;
+  transform: scale(0);
+  transition:
+    transform 0.6s cubic-bezier(.4,0,.2,1),
+    opacity 0.4s cubic-bezier(.4,0,.2,1);
 }

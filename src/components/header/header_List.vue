@@ -8,9 +8,9 @@ const darkMode = ref(localStorage.getItem('theme') === 'dark')
 
 // 切换主题方法
 const toggleDarkMode = () => {
-  darkMode.value = !darkMode.value
-  localStorage.setItem('theme', darkMode.value ? 'dark' : 'light')
-}
+  darkMode.value = !darkMode.value;
+  localStorage.setItem('theme', darkMode.value ? 'dark' : 'light');
+};
 
 // 监听主题变化
 // header_List.vue 修改部分
@@ -23,6 +23,7 @@ watchEffect(() => {
     document.documentElement.setAttribute('data-theme', 'light')
   }
 })
+
 </script>
 
 <template>

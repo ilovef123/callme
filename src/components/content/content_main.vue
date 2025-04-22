@@ -6,7 +6,7 @@
   import { useRouter } from 'vue-router';
   const router = useRouter();
   function goLogin(){
-      router.push({path:'/Register'})
+      router.push({path:'/login'})
   }
 </script>
 

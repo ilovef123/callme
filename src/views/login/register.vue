@@ -96,7 +96,7 @@ const handleRegister = async () => {
     msg.value = res.data.message || '注册成功';
     isError.value = false;
     // 可选：注册成功后自动跳转
-    // router.push('/login');
+    router.push('/login');
   } catch (err: any) {
     msg.value = err.response?.data?.message || '注册失败';
     isError.value = true;

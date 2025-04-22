@@ -26,6 +26,11 @@ const routes = [
     name: 'ForgotPassword',
     component: () => import(/* webpackPrefetch: true */ '@/views/login/forgotPassword.vue')
   },
+  {
+    path: '/chat',
+    name: 'Chat',
+    component: () => import(/* webpackPrefetch: true */ '@/views/chat/chatPage.vue')
+  }
 ];
 
 const router = createRouter({

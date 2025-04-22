@@ -77,7 +77,7 @@ const handleLogin = async () => {
     msg.value = res.data.message || '登录成功';
     isError.value = false;
     // 登录成功后可跳转首页
-    // router.push('/home');
+    router.push('/chat');
   } catch (err: any) {
     msg.value = err.response?.data?.message || '登录失败';
     isError.value = true;

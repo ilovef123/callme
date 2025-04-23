@@ -21,6 +21,9 @@
       <span class="error-message-inside" v-if="phoneError">{{ phoneError }}</span>
     </div>
     <div class="form-group input-error-group">
+      <input v-model="formData.nickname" type="text" placeholder="请输入昵称" autocomplete="off" />
+    </div>
+    <div class="form-group input-error-group">
       <input v-model="formData.password" type="password" placeholder="请输入密码" autocomplete="off" :class="{ 'input-error': pwdError }" />
       <span class="error-message-inside" v-if="pwdError">{{ pwdError }}</span>
     </div>
@@ -49,6 +52,7 @@ import axios from 'axios';
 const router = useRouter();
 const formData = ref({
   phone: '',
+  nickname: '',
   password: '',
   confirmPassword: ''
 });
@@ -91,6 +95,7 @@ const handleRegister = async () => {
   try {
     const res = await axios.post('http://localhost:3001/api/auth/register', {
       username: formData.value.phone,
+      nickname: formData.value.nickname,
       password: formData.value.password
     });
     msg.value = res.data.message || '注册成功';

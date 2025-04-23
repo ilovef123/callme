@@ -6,7 +6,7 @@ const router = express.Router();
 
 // 注册
 router.post('/register', async (req: Request, res: Response) => {
-  const { username, password } = req.body;
+  const { username, nickname, password } = req.body;
 
   // 1. 校验手机号格式
   if (!username || typeof username !== 'string') {
@@ -16,7 +16,12 @@ router.post('/register', async (req: Request, res: Response) => {
     return res.status(400).json({ message: '手机号格式错误，应为11位中国大陆手机号' });
   }
 
-  // 2. 校验密码
+  // 2. 校验昵称
+  if (!nickname || typeof nickname !== 'string' || !nickname.trim()) {
+    return res.status(400).json({ message: '昵称不能为空' });
+  }
+
+  // 3. 校验密码
   if (!password || typeof password !== 'string') {
     return res.status(400).json({ message: '密码不能为空' });
   }
@@ -35,13 +40,17 @@ router.post('/register', async (req: Request, res: Response) => {
   }
 
   try {
-    // 3. 检查用户是否已存在
-    const exist = await User.findOne({ username });
+    // 4. 检查手机号是否已注册
+    const exist = await User.findOne({ iphone: username });
     if (exist) return res.status(400).json({ message: '该手机号已注册，请直接登录' });
 
-    // 4. 创建用户
+    // 5. 创建用户
     const hash = await bcrypt.hash(password, 10);
-    await User.create({ username, password: hash });
+    await User.create({
+      iphone: username,
+      username: nickname,
+      password: hash
+    });
     res.json({ message: '注册成功' });
   } catch (err) {
     console.error('注册异常:', err);
@@ -49,11 +58,12 @@ router.post('/register', async (req: Request, res: Response) => {
   }
 });
 
-// 登录接口（如有需要也可反馈）
+// 登录接口
 router.post('/login', async (req: Request, res: Response) => {
   const { username, password } = req.body;
   try {
-    const user = await User.findOne({ username });
+    // 登录时用手机号查找
+    const user = await User.findOne({ iphone: username });
     if (!user) {
       return res.status(400).json({ message: '用户不存在' });
     }

@@ -22,6 +22,7 @@
     </div>
     <div class="form-group input-error-group">
       <input v-model="formData.nickname" type="text" placeholder="请输入昵称" autocomplete="off" />
+      <span class="error-message-inside" v-if="nicknameError">{{ nicknameError }}</span>
     </div>
     <div class="form-group input-error-group">
       <input v-model="formData.password" type="password" placeholder="请输入密码" autocomplete="off" :class="{ 'input-error': pwdError }" />
@@ -62,14 +63,24 @@ const isError = ref(false);
 const phoneError = ref('');
 const pwdError = ref('');
 const confirmPwdError = ref('');
+const nicknameError = ref('');
 
 const validate = () => {
   let valid = true;
   phoneError.value = '';
   pwdError.value = '';
   confirmPwdError.value = '';
+  nicknameError.value = '';
+
   if (!/^1[3-9]\d{9}$/.test(formData.value.phone)) {
     phoneError.value = '手机号格式错误';
+    valid = false;
+  }
+  if (!formData.value.nickname) {
+    nicknameError.value = '请输入昵称';
+    valid = false;
+  } else if (formData.value.nickname.length > 7) {
+    nicknameError.value = '昵称长度不能超过7个字符';
     valid = false;
   }
   if (!formData.value.password) {
@@ -83,8 +94,8 @@ const validate = () => {
     confirmPwdError.value = '两次密码不一致';
     valid = false;
   }
-   // 这里加一行
-   console.log('phoneError:', phoneError.value, 'pwdError:', pwdError.value, 'confirmPwdError:', confirmPwdError.value);
+  // 这里加一行
+  console.log('phoneError:', phoneError.value, 'nicknameError:', nicknameError.value, 'pwdError:', pwdError.value, 'confirmPwdError:', confirmPwdError.value);
   return valid;
 };
 
@@ -109,4 +120,18 @@ const handleRegister = async () => {
 };
 </script>
 
-<style lang="scss" src="./style.scss"></style>
+<style lang="scss">
+@import './style.scss';
+
+.error-message-inside {
+  color: #ff5a5a;
+  font-size: 13px;
+  display: block;
+  margin: 0px 0 0 0;
+  text-align: center;
+  /* 下面三行确保文字完整显示 */
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+</style>

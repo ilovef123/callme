@@ -1,0 +1,212 @@
+.moments-page-layout {
+    width: 100%;
+    min-height: 100vh;
+    background: #fff;
+    padding: 0;
+  }
+  
+  /* 内容区宽度和居中 */
+  .moments-center-area {
+    width: 100%;
+    max-width: 960px; // 可保留，防止超大屏太宽
+    min-width: 340px;  // 可选，防止太窄
+    margin: 0 auto;
+  }
+  
+  /* 顶部卡片区 */
+  .moments-header {
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #e5e6eb;
+    display: flex;
+    align-items: center;
+    min-height: 100px;
+    box-sizing: border-box;
+  }
+  .moments-header-info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px 0 48px;
+  }
+  .moments-header-left {
+    display: flex;
+    align-items: center;
+  }
+  .moments-header-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #fff;
+    color: #409eff;
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .moments-header-nickname {
+    font-size: 22px;
+    color: #222;
+    font-weight: bold;
+    background: none;
+    text-shadow: none;
+  }
+  .publish-btn {
+    background: #409eff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 26px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.09);
+    transition: background 0.2s;
+    &:hover {
+      background: #337ecc;
+    }
+  }
+  
+  /* 动态列表和内容 */
+  .moments-list-wrapper {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .moments-list {
+    list-style: none;
+    margin: 0; padding: 0;
+  }
+  .moment-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 22px 0 22px 48px;
+    border-bottom: 1px solid #f0f0f0;
+    background: #fff;
+  }
+  .moment-content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .avatar-wechat.moment-author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 18px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .moment-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .moment-author {
+    font-size: 16px;
+    font-weight: 500;
+    color: #409eff;
+    margin-bottom: 2px;
+  }
+  .moment-text {
+    font-size: 15px;
+    color: #222;
+    margin-bottom: 6px;
+  }
+  .moment-imgs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .moment-img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    background: #f5f5f5;
+    border: 1px solid #eee;
+  }
+  .moment-meta {
+    font-size: 12px;
+    color: #888;
+  }
+  
+  /* 发帖弹窗样式 */
+  .add-moment-modal {
+    position: fixed;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.14);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .simple-upload-card {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    padding: 32px 28px 24px 28px;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .simple-upload-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 18px;
+    text-align: center;
+  }
+  .simple-upload-textarea {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #e5e6eb;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+    font-size: 15px;
+    resize: vertical;
+  }
+  .simple-upload-input {
+    margin-bottom: 16px;
+  }
+  .simple-upload-actions {
+    display: flex;
+    gap: 16px;
+  }
+  .simple-upload-btn {
+    flex: 1;
+    background: #409eff;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 0;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    &.cancel {
+      background: #aaa;
+      color: #fff;
+    }
+    &:hover {
+      background: #337ecc;
+      &.cancel {
+        background: #888;
+      }
+    }
+  }
+  
+  /* 可选：让文字可选中 */
+  .selectable {
+    user-select: text;
+  }

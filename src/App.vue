@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import './assets/global-scroll-fix.css'
 </script>
 
 <template>

@@ -1,10 +1,10 @@
 .contacts-page-layout {
   display: flex;
   height: 100vh;
-  background: #f7fafd;
+  background: #ffffff;
 }
 .contacts-left-panel {
-  width: 220px;
+  width: 240px;
   min-width: 180px;
   max-width: 260px;
   height: 100vh;
@@ -53,7 +53,7 @@
   }
 }
 .contacts-search-bar {
-  background: #f7fafd;
+  background: #fff;
   padding: 12px 16px 8px 16px;
 }
 .contacts-search-bar input {
@@ -109,12 +109,12 @@
   position: absolute;
   left: 322px; // 假如左侧栏宽220px
   top: 0;
-  width: calc(100vw - 220px);
+  width: calc(100vw - 322px);
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f7fafd;
+  background: #fff;
   z-index: 10;
 }
 .user-info-card {
@@ -181,7 +181,7 @@
   border-radius: 6px;
   // border: 1px solid #e5e6eb;
   font-size: 15px;
-  // background: #f7fafd;
+  // background: #fff;
 }
 .detail-close-btn {
   background: #409eff;
@@ -196,4 +196,9 @@
   &:hover {
     background: #337ecc;
   }
+}
+.avatar-img{
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
 }

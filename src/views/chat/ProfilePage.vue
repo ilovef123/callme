@@ -1,43 +1,101 @@
 <template>
   <div class="profile-moments-page">
-    <UserProfile :user="user" />
+    <!-- <UserProfile :user="user" /> -->
     <hr class="profile-divider" />
-    <UserMoments :moments="moments" />
+    <UserMoments :user="user" :moments="moments" @update:avatar="handleAvatarUpdate" />
   </div>
 </template>
 
 <script setup lang="ts">
 import UserProfile from './UserProfile/UserProfile.vue'
 import UserMoments from './UserProfile/UserMoments.vue'
-import { ref } from 'vue'
-const user = ref({
+import { ref, onMounted, watch } from 'vue'
+import axios from 'axios'
+
+interface User {
+  avatar: string;
+  nickname: string;
+  username: string;
+  mobile: string;
+  userId: string;
+}
+
+let userObj: User = {
   avatar: 'https://img1.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=138&f=JPEG?w=300&h=300',
-  nickname: '我的昵称',
-  mobile: '18888888888'
-})
-const moments = ref([
-  {
-    id: 1,
-    content: 'Vue3项目紧红红恢复！',
-    imgs: ['https://img2.baidu.com/it/u=1234567890,1234567890&fm=253&fmt=auto&app=120&f=JPEG?w=400&h=400'],
-    time: '刚刚'
+  nickname: '未登录',
+  username: '',
+  mobile: '',
+  userId: '680f6ea97e1d1de90dc7032e'
+};
+
+const local = localStorage.getItem('user');
+if (local) {
+  try {
+    const u = JSON.parse(local);
+    userObj = {
+      avatar: u.avatar || u.avatarUrl || userObj.avatar,
+      nickname: u.nickname || u.username || u.mobile || u.iphone || '未命名用户',
+      username: u.username || '',
+      mobile: u.mobile || u.iphone || '',
+      userId: (u._id || u.userId || userObj.userId || '').toString()
+    }
+    if (!userObj.userId) userObj.userId = '680f6ea97e1d1de90dc7032e';
+  } catch (e) {
+    userObj.userId = '680f6ea97e1d1de90dc7032e';
   }
-])
+}
+const user = ref<User>(userObj);
+
+function setUser(userObj: User) {
+  localStorage.setItem('user', JSON.stringify(userObj));
+  window.dispatchEvent(new Event('storage'));
+}
+
+function handleAvatarUpdate(newUrl: string) {
+  user.value.avatar = newUrl;
+  setUser(user.value);
+  fetchUserMoments(); // 头像变更后立即刷新动态，确保头像实时同步
+}
+
+const moments = ref<any[]>([])
+async function fetchUserMoments() {
+  const res = await axios.get('http://localhost:3001/api/moment/list', {
+  params: { userId: user.value.userId }
+})
+moments.value = (res.data || []).map((item: any) => ({
+  id: item._id,
+  userId: item.userId,
+  content: item.content,
+  imgs: item.images || [],
+  time: item.createdAt || '',
+  avatar: item.avatar,
+  username: item.username
+}));
+``
+}
+
+onMounted(() => { fetchUserMoments() })
+watch(() => user.value.userId, () => { fetchUserMoments() })
 </script>
 
 <style scoped>
 .profile-moments-page {
-  width: 70%;
-  min-width: 340px;
-  max-width: 960px;
-  margin: 32px auto 0 auto;
+  width: 100%;
+  min-height: 100vh;
   background: #fff;
-  border-radius: 12px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
 }
 .profile-divider {
   border: none;
   border-top: 1px solid #e5e6eb;
   margin: 0 32px 16px 32px;
+}
+:global(html, body, #app) {
+  overflow-y: auto !important;
+  height: auto !important;
 }
 </style>

@@ -136,3 +136,32 @@ header {
     transform 0.6s cubic-bezier(.4,0,.2,1),
     opacity 0.4s cubic-bezier(.4,0,.2,1);
 }
+
+/* ===== CarouselPromo.vue 黑暗模式适配 ===== */
+.dark .promo-card {
+  background: #23272e !important;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.45) !important;
+  border-color: #333 !important;
+}
+.dark .promo-img {
+  background: #181a1b !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.28) !important;
+}
+.dark .promo-title {
+  color: #fff !important;
+}
+.dark .promo-info {
+  color: #e0e6ef !important;
+}
+.dark .promo-tech {
+  background: #232c3a !important;
+  color: #6db3fa !important;
+}
+.dark .promo-btn {
+  background: linear-gradient(90deg,#3a7bd5,#00d2ff) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.22) !important;
+}
+.dark .promo-btn:hover {
+  background: linear-gradient(90deg,#005bea,#3a7bd5) !important;
+}

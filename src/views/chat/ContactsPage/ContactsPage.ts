@@ -32,7 +32,7 @@ const user = JSON.parse(localStorage.getItem('user') || '{}')
 // 拉取好友（用 userId 查询！）
 export async function fetchContacts() {
   try {
-    const res = await axios.get('http://localhost:3001/api/friend/list', {
+    const res = await axios.get('/api/friend/list', {
       params: { userId: user._id || user.userId }
     })
     contacts.value = res.data || []
@@ -81,7 +81,7 @@ export async function addContact() {
     return
   }
   try {
-    const res = await axios.post('http://localhost:3001/api/friend/add', {
+    const res = await axios.post('/api/friend/add', {
       userId: user._id || user.userId, // 这里必须传 userId，后端才不会报错
       friendIphone: addForm.value.phone
     })

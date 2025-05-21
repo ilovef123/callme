@@ -1,6 +1,7 @@
-
 <template>
-  <button @click="goLogin">立即体验</button>
+  <button @click="goLogin" style="margin-top:20px;">立即体验</button>
+  <!-- <CarouselPromo /> -->
+
 </template>
 <script setup lang="ts">
   import { useRouter } from 'vue-router';

@@ -30,6 +30,14 @@ router.post('/add', async (req, res) => {
     await friendFriends.save();
   }
 
+  // --- 新增：推送 WebSocket 好友变更事件 ---
+  try {
+    const wsServer = require('../wsServer');
+    if (wsServer && wsServer.sendToUser) {
+      wsServer.sendToUser(userId, { type: 'friend_update' });
+      wsServer.sendToUser(friendUser._id.toString(), { type: 'friend_update' });
+    }
+  } catch (e) { /* ignore */ }
   res.json({ success: true });
 });
 

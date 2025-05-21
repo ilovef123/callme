@@ -82,8 +82,17 @@
   transition: background 0.2s;
   border-radius: 8px;
   margin: 4px 0;
-  &.active, &:hover {
+  background: #fff;
+  position: relative;
+  z-index: 1;
+  // 修复 hover 闪烁/边框问题
+  &:hover:not(.active) {
+    background: #f3faff;
+    box-shadow: 0 2px 8px rgba(64,158,255,0.07);
+  }
+  &.active {
     background: #e6f7ff;
+    box-shadow: 0 4px 16px rgba(64,158,255,0.11);
   }
 }
 .avatar-wechat {
@@ -198,7 +207,7 @@
   }
 }
 .avatar-img{
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 8px;
 }

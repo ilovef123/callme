@@ -13,17 +13,19 @@ import userRoutes from './routes/user';
 
 const app = express();
 app.use(cors());
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ limit: '10mb', extended: true }));
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
 // 连接MongoDB
-mongoose.connect('mongodb://localhost:27017/callme', {
+mongoose.connect('mongodb://127.0.0.1:27017/callme', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 10000, // 10秒超时
 } as mongoose.ConnectOptions).then(() => {
   console.log('MongoDB connected');
 }).catch(err => {
-  console.error('MongoDB connection error:', err);
+  console.error('MongoDB connection error:', err.message);
+  console.error('请确认：1) mongod 已在云服务器运行且监听 0.0.0.0:28017；2) 安全组已放行 28017 端口；3) 本地可 telnet 该端口。');
 });
 
 // 路由挂载
@@ -38,6 +40,6 @@ app.use('/api/user', userRoutes);         // 用户相关（含头像上传）
 app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
 
 // 启动服务
-app.listen(3001, () => {
+app.listen(3001, '0.0.0.0', () => {
   console.log('Server running on http://localhost:3001');
 });

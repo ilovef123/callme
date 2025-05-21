@@ -92,14 +92,14 @@ const handleRegister = async () => {
     return;
   }
   try {
-    const res = await axios.post('http://localhost:3001/api/auth/register', {
+    const res = await axios.post('/api/auth/register', {
       iphone: form.value.iphone,
       username: form.value.username,
       password: form.value.password
     });
     if (res.data.success) {
       // 注册成功后自动登录
-      const loginRes = await axios.post('http://localhost:3001/api/auth/login', {
+      const loginRes = await axios.post('/api/auth/login', {
         iphone: form.value.iphone,
         password: form.value.password
       });
@@ -122,7 +122,7 @@ const handleRegister = async () => {
 </script>
 
 <style lang="scss">
-@import './style.scss';
+@use './style.scss' as *;
 
 .error-message-inside {
   color: #ff5a5a;

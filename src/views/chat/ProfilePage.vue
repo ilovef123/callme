@@ -9,7 +9,7 @@
 <script setup lang="ts">
 import UserProfile from './UserProfile/UserProfile.vue'
 import UserMoments from './UserProfile/UserMoments.vue'
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 import axios from 'axios'
 
 interface User {
@@ -59,22 +59,31 @@ function handleAvatarUpdate(newUrl: string) {
 
 const moments = ref<any[]>([])
 async function fetchUserMoments() {
-  const res = await axios.get('http://localhost:3001/api/moment/list', {
-  params: { userId: user.value.userId }
-})
-moments.value = (res.data || []).map((item: any) => ({
-  id: item._id,
-  userId: item.userId,
-  content: item.content,
-  imgs: item.images || [],
-  time: item.createdAt || '',
-  avatar: item.avatar,
-  username: item.username
-}));
-``
+  console.log('【ProfilePage 调试】fetchUserMoments 请求参数 userId:', user.value.userId)
+  const res = await axios.get('/api/moment/list', {
+    params: { userId: user.value.userId }
+  })
+  console.log('【ProfilePage 调试】fetchUserMoments 接口返回:', res.data)
+  moments.value = (res.data || []).map((item: any) => ({
+    id: item._id,
+    userId: item.userId,
+    content: item.content,
+    imgs: item.images || [],
+    time: item.createdAt || '',
+    avatar: item.avatar,
+    username: item.username
+  }));
+  console.log('【ProfilePage 调试】moments.value:', moments.value)
 }
 
-onMounted(() => { fetchUserMoments() })
+onMounted(() => {
+  fetchUserMoments();
+  const handler = () => fetchUserMoments();
+  window.addEventListener('userMomentsUpdated', handler);
+});
+onUnmounted(() => {
+  window.removeEventListener('userMomentsUpdated', fetchUserMoments);
+});
 watch(() => user.value.userId, () => { fetchUserMoments() })
 </script>
 

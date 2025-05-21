@@ -1,4 +1,6 @@
 // content_main.scss
+@use "sass:color";
+
 button {
   // 基础样式
   padding: 12px 32px;
@@ -16,7 +18,7 @@ button {
 
   // 悬停效果
   &:hover {
-    background-color: darken(#0562db, 10%);
+    background-color: color.adjust(#0562db, $lightness: -10%);
   }
 
   // 点击效果

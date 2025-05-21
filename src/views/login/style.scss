@@ -1,4 +1,5 @@
-// style.scss
+@use "sass:color";
+
 // 颜色变量
 $primary-color: #006cff;
 $primary-hover: #3759c9;
@@ -212,7 +213,7 @@ $font-size-slogan: 1.8rem;
 
       .forgot-link {
         font-size: 0.875rem;
-        color: lighten($text-color, 30%);
+        color: color.adjust($text-color, $lightness: 30%);
         text-decoration: none;
         transition: color 0.3s ease;
 
@@ -223,7 +224,7 @@ $font-size-slogan: 1.8rem;
 
       .forgot-password {
         font-size: 0.875rem;
-        color: lighten($text-color, 30%);
+        color: color.adjust($text-color, $lightness: 30%);
         text-decoration: none;
         transition: color 0.3s ease;
 

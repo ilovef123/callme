@@ -20,12 +20,13 @@
       <!-- 作者 -->
       <div class="author">Heath</div>
       
-      <p>
-        我们致力于打造一个 <strong>多元化、充满活力的</strong> 开源生态及社区，
-        使用的技术涵盖了如 {{technologies.join('、') }} 等多个领域，
-        无论你是刚开始探索开源，还是已经拥有丰富的开发经验，
-        这里都有适合你的项目和机会！欢迎您加入我们！
+      <p style="text-align: center;font-size: 18px;">
+          本项目基于 Vue3 + Vite 构建，采用 TypeScript 实现组件化开发。
+          <br>
+          集成了现代化的聊天、动态（朋友圈）、登录等功能。
+      
       </p>
+
     </div>
     
     <!-- 联系信息 -->

@@ -1,16 +1,19 @@
 <template>
-      <div class="user-avatar" @click="goProfile">
+      <div class="user-avatar" @click="goProfile ? goProfile() : null">
       <img
         v-if="userAvatar"
-        :src="userAvatar"
+        :src="getFullUrl(userAvatar)"
         alt="avatar"
         class="avatar-img"
+        style="width: 48px; height: 48px;margin-top: 8px;"
       />
       <img
         v-else
         src="@/assets/images/logo.png"
         alt="logo"
         class="avatar-img logo-img"
+        style="width: 48px; height: 48px;margin-top: 8px;"
+
       />
     </div>
   <div class="main-nav">
@@ -34,6 +37,13 @@ import { defineProps } from 'vue'
 import { useRouter } from 'vue-router'
 import { Message, User, AddressBook, FriendsCircle } from '@icon-park/vue-next'
 import { ref, onMounted, watch } from 'vue'
+
+// goProfile 方法声明，防止模板报错
+function goProfile() {
+  // 可根据实际跳转逻辑补充
+}
+
+import getFullUrl from '@/utils/getFullUrl';
 
 // 读取用户数据（假设localStorage有user对象）
 const user = ref(JSON.parse(localStorage.getItem('user') || '{}'))
@@ -60,10 +70,6 @@ onMounted(() => {
 const props = defineProps<{ activeTab: string }>()
 const router = useRouter()
 
-// const goProfile = () => {
-//   router.push('/profile')
-// }
-
 const tabs = [
   { label: '消息', value: 'chat', icon: Message },
   { label: '联系人', value: 'contacts', icon: AddressBook },
@@ -72,8 +78,6 @@ const tabs = [
 ]
 </script>
 
-<style lang="scss" scoped>
-@import './MainNav.scss';
-
-
+<style lang="scss">
+@use './MainNav.scss' as *;
 </style>

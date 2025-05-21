@@ -69,7 +69,7 @@ const handleLogin = async () => {
     return;
   }
   try {
-    const res = await axios.post('http://localhost:3001/api/auth/login', {
+    const res = await axios.post('/api/auth/login', {
       iphone: form.value.iphone,
       password: form.value.password
     });

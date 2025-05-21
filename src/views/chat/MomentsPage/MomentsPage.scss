@@ -174,8 +174,8 @@ html, body, #app {
 
 
 .moment-author-avatar {
-  width: 38px;
-  height: 38px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   font-size: 17px;
   font-weight: bold;
@@ -356,10 +356,17 @@ html, body, #app {
     min-height: 38px;
   }
   .moment-author-avatar {
-    width: 32px;
-    height: 32px;
-    font-size: 14px;
-    margin-right: 6px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 17px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 3px;
+    margin-left: -14px;
+    background: #eaf4ff;
   }
 }
 
@@ -795,7 +802,29 @@ html, body, #app {
   }
 }
 .avatar-img{
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
+  margin-top: 3px;
   border-radius: 8px;
+}
+
+.moment-card-header .avatar-wechat, .moment-author-avatar, .moment-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+  margin-right: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: none;
+}
+
+.avatar-img, .moment-card-header .avatar-img, .moment-author-avatar img, .moment-avatar img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: none;
 }

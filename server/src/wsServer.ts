@@ -1,39 +1,49 @@
-// TypeScript 版 WebSocket 服务端
-import { WebSocketServer, WebSocket } from 'ws'
+import WebSocket from 'ws';
+import http from 'http';
 
-const wss = new WebSocketServer({ port: 3002 })
+const server = http.createServer();
+const wss = new WebSocket.Server({ server });
 
-// 在线用户映射 userId -> ws
-const clients = new Map<string, WebSocket>()
+const clients = new Map<string, WebSocket>();
 
-wss.on('connection', function connection(ws: WebSocket) {
-  let userId: string | null = null
-  ws.on('message', function incoming(message: string) {
+wss.on('connection', (ws) => {
+  let userId: string | undefined;
+  ws.on('message', (msg) => {
     try {
-      const data = JSON.parse(message)
+      const data = JSON.parse(msg.toString());
       if (data.type === 'init' && typeof data.userId === 'string') {
-        userId = data.userId
+        userId = data.userId;
         if (typeof userId === 'string') {
-          clients.set(userId, ws)
+          clients.set(userId, ws);
         }
       } else if (data.type === 'chat') {
         // data: { type: 'chat', from, to, content }
-        // 转发给目标用户
-        const toWs = clients.get(data.to)
+        const msgObj = {
+          type: 'chat',
+          from: data.from,
+          content: data.content,
+          time: Date.now()
+        };
+        // 推送给接收方
+        const toWs = clients.get(data.to);
         if (toWs && toWs.readyState === WebSocket.OPEN) {
-          toWs.send(JSON.stringify({
-            type: 'chat',
-            from: data.from,
-            content: data.content,
-            time: Date.now()
-          }))
+          toWs.send(JSON.stringify(msgObj));
+        }
+        // 始终推送给发送方（自己），即使 from==to
+        const fromWs = clients.get(data.from);
+        if (fromWs && fromWs.readyState === WebSocket.OPEN) {
+          fromWs.send(JSON.stringify(msgObj));
         }
       }
-    } catch (e) { }
-  })
+    } catch (e) {
+      console.error('ws message error:', e);
+    }
+  });
   ws.on('close', function () {
-    if (typeof userId === 'string') clients.delete(userId)
-  })
-})
+    if (userId) clients.delete(userId);
+  });
+});
 
-console.log('WebSocket server running on ws://localhost:3002')
+server.listen(3002, '0.0.0.0', () => {
+  console.log('WebSocket server running on ws://0.0.0.0:3002');
+});

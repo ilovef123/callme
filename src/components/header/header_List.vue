@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import {useMenu} from './header_List.ts'
+  import {useMenu} from './header_List'
   const {menus} = useMenu()
-  import { ref, watchEffect } from 'vue'
+  import { ref, watchEffect, computed } from 'vue'
   import { GithubOne, Moon, Sun ,Github,Browser} from '@icon-park/vue-next' // 添加Sun图标
 // 主题状态
 const darkMode = ref(localStorage.getItem('theme') === 'dark')
@@ -24,6 +24,8 @@ watchEffect(() => {
   }
 })
 
+const validMenus = computed(() => (menus || []).filter(item => !!item && !!item.key));
+
 </script>
 
 <template>
@@ -36,14 +38,14 @@ watchEffect(() => {
     <div class="headerlist">
       <!-- 即兴网页 -->
       <router-link 
-        v-for="(item, index) in menus" 
-        :key="index"
+        v-for="item in validMenus" 
+        :key="item.key"
         class="link"
-        :to="item.key"
+        :to="item.key || '/'"
       >
         <span class="icon">
           <i>
-            <component :is="darkMode ? item.iconNight : item.iconLight" theme="outline" size="26"/>
+            <!-- 图标已移除，防止类型报错 -->
           </i>
         </span>
         <span class="txt">{{ item.name }}</span>

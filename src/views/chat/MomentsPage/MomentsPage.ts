@@ -67,7 +67,7 @@ async function addMoment() {
     addForm.value.content = ' ';
   }
   if (!addForm.value.content.trim() && addForm.value.imgs.length === 0) return;
-  await axios.post('http://localhost:3001/api/moment/add', {
+  await axios.post('/api/moment/add', {
     userId: user._id,
     content: addForm.value.content,
     images: addForm.value.imgs
@@ -103,7 +103,7 @@ export { addForm, addMoment, onImgChange, carouselIndex, carouselPrev, carouselN
 
 // 拉取朋友圈
 export async function fetchMoments() {
-  const res = await axios.get('http://localhost:3001/api/moment/list');
+  const res = await axios.get('/api/moment/list');
   moments.value = (res.data || []).map((item: any) => ({
     id: item._id,
     author: item.username || item.userId || '', // 优先显示username

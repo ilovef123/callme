@@ -16,12 +16,7 @@
 
 <script setup lang="ts">
 // 统一补全资源 URL，支持绝对和相对路径
-function getFullUrl(url: string) {
-  if (!url) return ''
-  if (url.startsWith('http')) return url
-  if (url.startsWith('data:image/')) return url // 兼容 base64
-  return url.startsWith('/') ? 'http://localhost:3001' + url : 'http://localhost:3001/' + url
-}
+import getFullUrl from '@/utils/getFullUrl';
 const defaultAvatar = '/default-avatar.png' // 可替换为你自己的默认头像路径
 
 import { ref, watch, defineProps, defineEmits } from 'vue'
@@ -45,7 +40,7 @@ async function onAvatarChange(e: Event) {
   formData.append('avatar', file);
   formData.append('userId', props.user.userId);
   try {
-    const res = await axios.post('http://localhost:3001/api/user/avatar', formData, {
+    const res = await axios.post('/api/user/avatar', formData, {
       headers: { 'Content-Type': 'multipart/form-data' }
     });
     if (res.data.success) {
@@ -73,7 +68,7 @@ function triggerAvatarChange() {
 </script>
 
 <style scoped lang="scss">
-@import './UserProfile.scss';
+@use './UserProfile.scss' as *;
 .profile-header {
   display: flex;
   justify-content: space-between;
@@ -119,8 +114,8 @@ function triggerAvatarChange() {
   cursor: pointer;
 }
 .profile-avatar {
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
   background: #eee;

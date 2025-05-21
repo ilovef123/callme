@@ -63,7 +63,7 @@
   };
   </script>
   
-  <style lang="scss" scoped>
-  @import './style.scss'; // 引用通用样式
+  <style lang="scss">
+  @use './style.scss' as *;
   </style>
   
